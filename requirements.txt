@@ -1,0 +1,3 @@
+openpyxl>=3.0.9
+pandas>=1.4.0
+pyspark>=3.2.1

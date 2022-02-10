@@ -1,0 +1,235 @@
+pais|cod_pais|pais_bbg
+abu dhabi|-1|abu dhabi
+aruba|-1|aruba
+bailia de guernsey|-1|bailiwick of guernsey
+islas cook|-1|cook islands
+curazao|-1|curacao
+dubai|-1|dubai
+gambia|-1|gambia
+gibraltar|-1|gibraltar
+granada|-1|grenada
+isla de man|-1|isle of man
+serbia|-1|serbia
+montenegro|-1|montenegro
+montserrat|-1|montserrat
+antillas neerlandesas|-1|neth. antilles
+no informado|-1|uninformed
+no informado|0|uninformed
+senegal|101|senegal
+guinea bissau|103|guinea-bissau
+guinea|104|guinea
+sierra leone|105|sierra leone
+liberia|106|liberia
+costa de marfil|107|cote d'ivoire
+ghana|108|ghana
+togo|109|togo
+nigeria|111|nigeria
+sudafrica|112|south africa
+botswana|113|botswana
+lesotho|114|lesotho
+malawi|115|malawi
+zimbabwe|116|zimbabwe
+zambia|117|zambia
+comoras|118|comoros
+mauricio|119|mauritius
+madagascar|120|madagascar
+mozambique|121|mozambique
+swazilandia|122|swaziland
+sudan|123|sudan
+egipto|124|egypt
+libia|125|libya
+tunez|126|tunisia
+argelia|127|algeria
+marruecos|128|morocco
+cabo verde|129|cape verde
+chad|130|chad
+niger|131|niger
+alto volta|132|high volta
+mali|133|mali
+mauritania|134|mauritania
+tanzania|135|tanzania
+uganda|136|uganda
+kenya|137|kenya
+somalia|138|somalia
+etiopia|139|ethiopia
+angola|140|angola
+burundi|141|burundi
+ruanda|142|rwanda
+zaire|143|zaire
+republica del congo|144|dem.rep. congo
+gabon|145|gabon
+santo tome y principe|146|sao tome and principe
+guinea ecuatorial|147|equatorial guinea
+republica centro africana|148|central african republic
+camerun|149|cameroon
+benin|150|benin
+territorio britanico en africa|151|british territory in africa
+territorio espaqol en africa|152|spanish territory in africa
+territorio frances en africa|153|french territory in africa
+bophuthatswana|154|bophuthatswana
+djibouti|155|djibouti
+seychelles|156|seychelles
+venda|158|band
+namibia|159|namibia
+burkina faso|161|burkina faso
+ciskel|162|ciskel
+eritrea|163|eritrea
+islas marshall|164|marshall islands
+saharavi|165|saharavi
+transkel|166|transkel
+suiza|200|switzerland
+venezuela|201|venezuela
+colombia|202|colombia
+trinidad y tobago|203|trinidad and tobago
+barbados|204|barbados
+jamaica|205|jamaica
+republica dominicana|206|dominican republic
+bahamas|207|bahamas
+haiti|208|haiti
+cuba|209|cuba
+panama|210|panama
+costa rica|211|costa rica
+nicaragua|212|nicaragua
+el salvador|213|el salvador
+honduras|214|honduras
+guatemala|215|guatemala
+mexico|216|mexico
+guyana|217|guyana
+ecuador|218|ecuador
+peru|219|peru
+brasil|220|brazil
+bolivia|221|bolivia
+paraguay|222|paraguay
+uruguay|223|uruguay
+argentina|224|argentina
+estados unidos|225|united states
+estados unidos|225|united states of america
+canada|226|canada
+territorio britanico en america|227|british territory in america
+territorio frances en america|228|french territory in america
+territorio holandes en america|229|dutch territory in america
+territorio de dinamarca|230|denmark territory
+dominica|231|dominica
+santa lucia|233|st lucia
+san vicente y las granadinas|234|st vincent & the grenadines
+suriname|235|suriname
+belice|236|belize
+antigua y barbuda|240|old and bearded
+san kitts y nevis|241|st kitts & nevis
+jordania|301|jordan
+arabia saudita|302|saudi arabia
+kuwait|303|kuwait
+oman|304|oman
+chipre|305|cyprus
+israel|306|israel
+iraq|307|iraq
+afganistan|308|afghanistan
+iran|309|iran
+republica arabe siria|310|syrian arab republic
+libano|311|lebanon
+qatar|312|qatar
+bahrein|313|bahrain
+sri lanka|314|sri lanka
+camboya|315|cambodia
+laos|316|laos
+india|317|india
+butan|318|butan
+tailandia|319|thailand
+nepal|320|nepal
+bangladesh|321|bangladesh
+yemen del norte|322|north yemen
+yemen del sur|323|south yemen
+pakistan|324|pakistan
+vietnam|325|vietnam
+myanmar|326|myanmar
+islas maldivas|327|maldives islands
+indonesia|328|indonesia
+malasia|329|malaysia
+taiwan|330|taiwan
+japon|331|japan
+singapur|332|singapore
+corea del sur|333|south korea
+corea del sur|333|korea, republic of
+corea del norte|334|north korea
+filipinas|335|philippines
+china|336|china
+mongolia|337|mongolia
+hong kong|340|hong kong
+emiratos arabes unidos|341|united arab emirates
+territorio britanico en asia|342|british territory in asia
+territorio portugues en asia|343|portuguese territory in asia
+brunei|344|brunei
+macao|345|macau
+islas cayman|386|cayman islands
+fiji|401|fiji
+nauru|402|nauru
+islas tonga|403|tonga islands
+samoa|404|samoa
+nueva zelanda|405|new zealand
+australia|406|australia
+territorio britanico en australia|407|british territory in australia
+territorio frances en australia|408|french territory in australia
+territorio norteamericano en australia|409|north american territory in australia
+papua nueva guinea|412|papua new guinea
+vanuatu|415|vanuatu
+kiribati|416|kiribati
+micronesia|417|micronesia
+islas salomon|418|solomon islands
+tuvalu|419|tuvalu
+belau|420|belau
+portugal|501|portugal
+italia|504|italy
+francia|505|france
+irlanda|506|ireland
+dinamarca|507|denmark
+suiza|508|switzerland
+austria|509|austria
+reino unido|510|united kingdom
+suecia|511|sweden
+finlandia|512|finland
+noruega|513|norway
+belgica|514|belgium
+paises bajos|515|netherlands
+islandia|516|iceland
+espana|517|spain
+albania|518|albania
+rumania|519|romania
+grcia|520|greece
+turquia|522|turkey
+malta|523|malta
+santa sede|524|holy see
+andorra|525|andorra
+bulgaria|527|bulgaria
+polonia|528|poland
+hungria|530|hungary
+luxemburgo|532|luxembourg
+liechtenstein|534|liechtenstein
+monaco|535|monaco
+san marino|536|san marino
+armenia|540|armenia
+azerbaijan|541|azerbaijan
+belarus|542|belarus
+bosnia y herzegovina|543|bosnia & herzegovina
+republica checa|544|czech republic
+republica eslovaca|545|slovakia
+croacia|547|croatia
+eslovenia|548|slovenia
+estonia|549|estonia
+georgia|550|georgia
+kazajstan|551|kazakhstan
+kirgistan|552|kirgistan
+letonia|553|latvia
+lituania|554|lithuania
+macedonia|555|macedonia
+moldova|556|moldova
+tadjikistan|557|tadjikistan
+turkmenistan|558|turkmenistan
+ucrania|559|ukraine
+uzbekistan|560|uzbekistan
+rusia|562|russia
+alemania|563|germany
+yugoslavia|564|yugoslavia
+jersey|593|jersey
+no informado|995|uninformed
+chile|997|chile
+bermuda|999|bermuda
