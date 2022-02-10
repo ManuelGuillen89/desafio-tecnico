@@ -39,20 +39,18 @@ print (" --> Generando query ... ")
 
 #Filtra homologacion_rating dejando las agencias requeridas
 homologacion_rating_filtrado = spark_session.sql(''' 
-SELECT hr.*
-FROM homologacion_rating hr
-WHERE hr.agencia_homol IN ('SP','MDY','FITCH')
-ORDER BY hr.orden_norma DESC
+SELECT *
+FROM homologacion_rating
+WHERE agencia_homol IN ('SP','MDY','FITCH')
+ORDER BY orden_norma DESC
 ''')
 homologacion_rating_filtrado.createOrReplaceTempView("homol_rating_filt")
 homologacion_rating_filtrado.show()
 
 test_df_1 = spark_session.sql('''
-SELECT hr.rating_norma  
-FROM homol_rating_filt hr
-WHERE hr.rating IN ('A','A-','Baa2')
-ORDER BY hr.orden_norma desc
-LIMIT 1 
+SELECT FIRST(rating_norma) as rating_nomrma
+FROM homol_rating_filt
+WHERE rating IN ('A','A-','Baa2')
 ''')
 test_df_1.show()
 
@@ -61,16 +59,14 @@ SELECT
     rat_emp.rut, 
     rat_emp.dv, 
     rat_emp.nombre, 
-    homol_pais.pais,
+    -- homol_pais.pais,
     (
-        SELECT hr.rating_norma  
-        FROM homol_rating_filt hr
-        WHERE hr.rating IN (rat_emp.sp, rat_emp.mdy, rat_emp.fitch)
-        ORDER BY hr.orden_norma DESC
-        LIMIT 1  
+        SELECT FIRST(rating_norma)
+        FROM homol_rating_filt
+        WHERE rating IN (rat_emp.sp, rat_emp.mdy, rat_emp.fitch)
     ) AS rating_empresa_h
 FROM rating_empresa rat_emp
-LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
+-- LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
 ''')
 maestro_de_ratings_sqldf.show() 
 
