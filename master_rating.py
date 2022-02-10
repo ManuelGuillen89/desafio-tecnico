@@ -47,7 +47,8 @@ ORDER BY hr.orden_norma DESC
 homologacion_rating_filtrado.createOrReplaceTempView("homol_rating_filt")
 #homologacion_rating_filtrado.show()
 
-test_df = spark_session.sql('''
+
+""" test_df_1 = spark_session.sql('''
 SELECT 
     rat_emp.rut,
     (SELECT FIRST(hrf.rating_norma) 
@@ -57,7 +58,18 @@ SELECT
 FROM rating_empresa rat_emp,
 (SELECT sp, mdy, fitch FROM rating_empresa WHERE rating_empresa.rut = rat_emp.rut ) as rat_no_homol  
 ''')
-test_df.show()
+test_df_1.show()
+ """
+
+
+test_df_2 = spark_session.sql('''
+SELECT 
+    FIRST(rating_por_rut.sp), rat_empresa.rut
+FROM 
+    (SELECT sp, mdy, fitch FROM rating_empresa WHERE rating_empresa.rut = rat_empresa.rut) as rating_por_rut,
+    rating_empresa rat_empresa
+''')
+test_df_2.show()
 
 """ maestro_de_ratings_sqldf = spark_session.sql('''
 SELECT 
