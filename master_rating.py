@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-from process_csv_outputs_functions import load_csv_to_spark_tempview
 import os
 
 CSV_FILE_NAMES = ['homologacion_pais', 'homologacion_rating','rating_empresa','rating_soberano']
