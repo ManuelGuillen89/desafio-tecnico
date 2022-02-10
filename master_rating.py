@@ -4,7 +4,7 @@ import os
 CSV_FILE_NAMES = ['homologacion_pais', 'homologacion_rating','rating_empresa','rating_soberano']
 INPUT_DIRECTORY = "data"
 
-def load_csv_to_spark_tempview(csv_file_name, directory, spark_session):
+def load_csv_into_spark_tempview(csv_file_name, directory, spark_session):
     dataframe = spark_session.read \
         .option("delimiter", "|") \
         .option("header", "true") \
@@ -32,21 +32,36 @@ for dataset in CSV_FILE_NAMES:
         print (f"Arhivo de entrada no econtrado: {INPUT_DIRECTORY}/{dataset}.csv")
         print ("Proceso abortado. Saliendo... ")
         exit()
-    load_csv_to_spark_tempview(dataset, INPUT_DIRECTORY, spark_session)
+    load_csv_into_spark_tempview(dataset, INPUT_DIRECTORY, spark_session)
     print (f"Dataset '{dataset}' cargado!")
 
-print (" --> Generando query ... ")
+print (" --> Generando querys ... ")
 
 #Filtra homologacion_rating dejando las agencias requeridas
-homologacion_rating_filtrado = spark_session.sql(''' 
+homologacion_rating_agencias = spark_session.sql(''' 
 SELECT *
 FROM homologacion_rating
 WHERE agencia_homol IN ('SP','MDY','FITCH')
 ORDER BY orden_norma DESC
 ''')
-homologacion_rating_filtrado.createOrReplaceTempView("homol_rating_filt")
-homologacion_rating_filtrado.show()
+homologacion_rating_agencias.createOrReplaceTempView("homol_rating_filt")
+homologacion_rating_agencias.show()
 
+m1 = spark_session.sql('''
+SELECT 
+    rat_emp.rut, 
+    rat_emp.dv, 
+    rat_emp.nombre, 
+    homol_pais.pais
+FROM rating_empresa rat_emp
+LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
+''')
+m1.show()
+
+
+
+
+"""
 test_df_1 = spark_session.sql('''
 SELECT FIRST(rating_norma) as rating_nomrma
 FROM homol_rating_filt
@@ -63,13 +78,14 @@ SELECT
     (
         SELECT FIRST(rating_norma)
         FROM homol_rating_filt
-        WHERE rating IN (rat_emp.sp, rat_emp.mdy, rat_emp.fitch)
-    ) AS rating_empresa_h
+        --WHERE rating IN (rat_emp.sp, rat_emp.mdy, rat_emp.fitch) -- "Correlated column is not allowed in predicate" ...
+        WHERE rating = rat_emp.sp -- Funciona pero no satisface el requerimiento..
+    ) AS rating__empresa
 FROM rating_empresa rat_emp
 -- LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
 ''')
 maestro_de_ratings_sqldf.show() 
-
+"""
 
 """ test_df_2 = spark_session.sql('''
 SELECT 
