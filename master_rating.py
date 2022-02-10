@@ -62,16 +62,16 @@ test_df_1.show()
  """
 
 
-test_df_2 = spark_session.sql('''
+""" test_df_2 = spark_session.sql('''
 SELECT 
-    FIRST(rating_por_rut.sp), rat_empresa.rut
-FROM 
-    (SELECT sp, mdy, fitch FROM rating_empresa WHERE rating_empresa.rut = rat_empresa.rut) as rating_por_rut,
-    rating_empresa rat_empresa
+    ratemp.rut
+FROM rating_empresa ratemp 
+LEFT JOIN (SELECT hr.* FROM homol_rating_filt) rating_filt ON  
+   
 ''')
-test_df_2.show()
+test_df_2.show() """
 
-""" maestro_de_ratings_sqldf = spark_session.sql('''
+maestro_de_ratings_sqldf = spark_session.sql('''
 SELECT 
     rat_emp.rut, 
     rat_emp.dv, 
@@ -87,7 +87,7 @@ SELECT
 FROM rating_empresa rat_emp
 LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
 ''')
-maestro_de_ratings_sqldf.show()   """
+maestro_de_ratings_sqldf.show() 
 
 
 """ 
