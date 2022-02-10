@@ -45,14 +45,14 @@ WHERE hr.agencia_homol IN ('SP','MDY','FITCH')
 ORDER BY hr.orden_norma DESC
 ''')
 homologacion_rating_filtrado.createOrReplaceTempView("homol_rating_filt")
-homologacion_rating_filtrado.show()
+#homologacion_rating_filtrado.show()
 
 test_df = spark_session.sql('''
 SELECT 
     rat_emp.rut,
-    (SELECT FIRST(hr.rating_norma) 
-        FROM homol_rating_filt hr
-        WHERE hr.rating IN (rat_no_homol.sp, rat_no_homol.mdy, rat_no_homol.fitch)
+    (SELECT FIRST(hrf.rating_norma) 
+        FROM homol_rating_filt hrf
+        WHERE hrf.rating IN (rat_no_homol.sp, rat_no_homol.mdy, rat_no_homol.fitch)
     ) as rating
 FROM rating_empresa rat_emp,
 (SELECT sp, mdy, fitch FROM rating_empresa WHERE rating_empresa.rut = rat_emp.rut ) as rat_no_homol  
