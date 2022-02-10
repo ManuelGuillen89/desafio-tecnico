@@ -45,21 +45,34 @@ WHERE hr.agencia_homol IN ('SP','MDY','FITCH')
 ORDER BY hr.orden_norma DESC
 ''')
 homologacion_rating_filtrado.createOrReplaceTempView("homol_rating_filt")
-#homologacion_rating_filtrado.show()
+homologacion_rating_filtrado.show()
 
-
-""" test_df_1 = spark_session.sql('''
-SELECT 
-    rat_emp.rut,
-    (SELECT FIRST(hrf.rating_norma) 
-        FROM homol_rating_filt hrf
-        WHERE hrf.rating IN (rat_no_homol.sp, rat_no_homol.mdy, rat_no_homol.fitch)
-    ) as rating
-FROM rating_empresa rat_emp,
-(SELECT sp, mdy, fitch FROM rating_empresa WHERE rating_empresa.rut = rat_emp.rut ) as rat_no_homol  
+test_df_1 = spark_session.sql('''
+SELECT hr.rating_norma  
+FROM homol_rating_filt hr
+WHERE hr.rating IN ('A','A-','Baa2')
+ORDER BY hr.orden_norma desc
+LIMIT 1 
 ''')
 test_df_1.show()
- """
+
+maestro_de_ratings_sqldf = spark_session.sql('''
+SELECT 
+    rat_emp.rut, 
+    rat_emp.dv, 
+    rat_emp.nombre, 
+    homol_pais.pais,
+    (
+        SELECT hr.rating_norma  
+        FROM homol_rating_filt hr
+        WHERE hr.rating IN (rat_emp.sp, rat_emp.mdy, rat_emp.fitch)
+        ORDER BY hr.orden_norma DESC
+        LIMIT 1  
+    ) AS rating_empresa_h
+FROM rating_empresa rat_emp
+LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
+''')
+maestro_de_ratings_sqldf.show() 
 
 
 """ test_df_2 = spark_session.sql('''
@@ -71,23 +84,6 @@ LEFT JOIN (SELECT hr.* FROM homol_rating_filt) rating_filt ON
 ''')
 test_df_2.show() """
 
-maestro_de_ratings_sqldf = spark_session.sql('''
-SELECT 
-    rat_emp.rut, 
-    rat_emp.dv, 
-    rat_emp.nombre, 
-    homol_pais.pais,
-    (
-        SELECT FIRST(hr.rating_norma) 
-        FROM homologacion_rating hr
-        WHERE hr.agencia_homol IN ('SP','MDY','FITCH')
-        AND hr.rating IN (SELECT sp, mdy, fitch FROM rating_empresa WHERE rating_empresa.rut = rat_emp.rut )
-        ORDER BY hr.orden_norma desc
-    ) AS rating__empresa 
-FROM rating_empresa rat_emp
-LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
-''')
-maestro_de_ratings_sqldf.show() 
 
 
 """ 
