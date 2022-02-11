@@ -146,7 +146,7 @@ master_3_df.show()
 print("--> Agregado!")
 
 #finalmente, exporta el resultado  a un CSV en el path 'data'
-print("--> Exportando resultado a CSV ...")
+print("--> Exportando resultado a CSV: 'data/maestro_ratings.csv' ...")
 master_3_panda_df = master_3_df.toPandas()
 master_3_panda_df.to_csv ("data/maestro_ratings.csv", 
                 index = None,
