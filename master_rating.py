@@ -60,7 +60,7 @@ SELECT
 FROM rating_empresa rat_emp
 LEFT JOIN homologacion_pais homol_pais ON ucase(rat_emp.pais_bbg) = ucase(homol_pais.pais_bbg)
 ''')
-#crea vista de la primera muestra
+#crea vista de la primera muestra del master
 master_1_df.createOrReplaceTempView("master_1_df")
 
 
@@ -81,7 +81,7 @@ def reduce_getting_rating_norma_x_rut(acc, row):
     return acc
 
 print ("--> generando cruce rating_norma_x_rut")
-#Aplica reductor a master_df y luego crea un dataframe con la data obtenida
+#Aplica reductor a master_1_df y luego crea un dataframe con la data obtenida
 master_df_collected = master_1_df.collect()
 rating_norma_x_rut = ft.reduce(reduce_getting_rating_norma_x_rut, master_df_collected, [])
 rating_norma_x_rut_df = spark_session.createDataFrame(data = rating_norma_x_rut, schema='rut string, rating_norma string')
@@ -90,7 +90,7 @@ rating_norma_x_rut_df.createOrReplaceTempView("rating_norma_x_rut")
 rating_norma_x_rut_df.show()
 
 
-print ("--> agregando rating a master ")
+print ("--> agregando rating a master ... ")
 master_2_df = spark_session.sql('''
 SELECT 
     m.rut, m.dv, m.nombre, m.pais, r.rating_norma AS rating

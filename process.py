@@ -7,10 +7,13 @@ OUTPUT_DIR = "data"
 
 def sheet_to_csv_from_xlsx(sheet_name, file_name, output_dir):
     dataframe = pd.read_excel (io=file_name, sheet_name=sheet_name)
+    if(sheet_name == 'rating_soberano'):
+        dataframe["sp"] = dataframe["sp"].map(lambda x: str(x).rstrip('u'))
     dataframe.to_csv (f"{output_dir}/{sheet_name}.csv", 
-                  index = None,
-                  header=True,
-                  sep='|')
+                index = None,
+                header=True,
+                sep='|')
+
 def exist_sheet_in_file(sheet_name, file_name):
     dataframe = None
     try:
