@@ -141,7 +141,6 @@ SELECT
 FROM master_2_df m
 LEFT JOIN rating_soberano_x_pais r ON ucase(m.pais_bbg) = ucase(r.pais_bbg)
 ''')
-master_3_df.createOrReplaceTempView("master_3_df")
 master_3_df.show()
 print("--> Agregado!")
 
